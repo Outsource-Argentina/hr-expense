@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_hr_expense_sheet_form_patch" model="ir.ui.view">
+        <field name="name">hr.expense.sheet.form.patch</field>
+        <field name="model">hr.expense.sheet</field>
+        <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form" />
+        <field name="arch" type="xml">
+            <!-- Botón para sincronizar estado de pago con facturas vinculadas si quedó en pendiente -->
+            <xpath expr="//header" position="inside">
+                <button
+                    name="action_sync_invoice_payments"
+                    string="Sincronizar con Facturas"
+                    type="object"
+                    class="btn-secondary"
+                    invisible="state != 'post' or not invoice_count"
+                    groups="account.group_account_invoice"
+                    help="Sincroniza el estado del reporte de gastos si las facturas de proveedor ya fueron pagadas."
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
