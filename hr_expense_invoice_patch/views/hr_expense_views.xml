@@ -12,7 +12,7 @@
                     string="Sincronizar con Facturas"
                     type="object"
                     class="btn-secondary"
-                    invisible="state != 'post' or not invoice_count"
+                    invisible="state not in ('approve', 'post') or not invoice_count"
                     groups="account.group_account_invoice"
                     help="Sincroniza el estado del reporte de gastos si las facturas de proveedor ya fueron pagadas."
                 />
